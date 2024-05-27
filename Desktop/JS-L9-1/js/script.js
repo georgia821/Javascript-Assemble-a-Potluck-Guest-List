@@ -1,38 +1,23 @@
-const addGuestButton = document.querySelector(".invite");
-const guestInputLabel = document.querySelector(".add-guest label");
-const guestInput = document.querySelector(".add-guest input");
-const guestList = document.querySelector(".guest-list");
-const guestCount = document.querySelector(".attendance");
-const guestFull = document.querySelector(".alert");
-
-addGuestButton.addEventListener("click", function () {
-  const guest = guestInput.value;
-  // console.log(guest);
-  if (guest !== "") {
-    addToList(guest);
-    updateGuestCount();
-    clearInput();
-  }
-});
-
-const clearInput = function () {
-  guestInput.value = "";
+const currentlyReading = {
+  title: "The Fifth Season",
+  author: "N.K. Jemisin",
+  series: "Broken Earth Trilogy",
+  pages: 512,
+  publicationDate: "August 4th, 2015",
+  currentChapter: 8,
+  totalChapters: 23,
 };
 
-const addToList = function (guest) {
-  const listItem = document.createElement("li");
-  listItem.innerText = guest;
-  guestList.append(listItem);
+console.log(currentlyReading.title);
+
+console.log(currentlyReading["pages"]);
+
+currentlyReading.awards = "Hugo Award for Best Novel (2016)";
+
+currentlyReading.updateChapter = function (chapterNum) {
+  this.currentChapter = chapterNum;
 };
 
-const updateGuestCount = function () {
-  const guests = document.querySelectorAll(".guest-list li");
-  guestCount.innerText = guests.length;
+currentlyReading.updateChapter(11);
 
-  if (guests.length === 8) {
-    addGuestButton.classList.add("hide");
-    guestInput.classList.add("hide");
-    guestInputLabel.classList.add("hide");
-    guestFull.classList.remove("hide");
-  }
-};
+console.log(currentlyReading);
